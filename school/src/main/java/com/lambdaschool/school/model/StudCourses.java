@@ -9,6 +9,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "studcourses")
 public class StudCourses extends Auditable implements Serializable {
+
+
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"studCourses", "hibernateLazyInitializer"})

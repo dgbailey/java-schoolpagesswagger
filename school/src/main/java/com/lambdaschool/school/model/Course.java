@@ -32,15 +32,17 @@ public class Course extends Auditable
     {
     }
 
-    public Course(String coursename)
-    {
-        this.coursename = coursename;
-    }
 
-    public Course(String coursename, Instructor instructor)
+
+    public Course(String coursename, Instructor instructor,List<Student> students)
     {
         this.coursename = coursename;
         this.instructor = instructor;
+        for (Student s: students)
+        {
+            s.getCourses().add(this);
+        }
+        this.students = students;
     }
 
     public long getCourseid()

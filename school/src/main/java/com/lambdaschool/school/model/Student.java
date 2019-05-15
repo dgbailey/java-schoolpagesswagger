@@ -28,9 +28,14 @@ public class Student extends Auditable
     {
     }
 
-    public Student(String studname)
+    public Student(String studname,List<Course> courses)
     {
         this.studname = studname;
+        for (Course c: courses)
+        {
+            c.getStudents().add(this);
+        }
+        this.courses = courses;
     }
 
     public long getStudid()
