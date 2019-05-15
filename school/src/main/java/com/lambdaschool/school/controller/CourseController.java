@@ -2,6 +2,7 @@ package com.lambdaschool.school.controller;
 
 import com.lambdaschool.school.model.Course;
 import com.lambdaschool.school.service.CourseService;
+import com.lambdaschool.school.service.StudentService;
 import com.lambdaschool.school.view.CountStudentsInCourses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,12 +18,22 @@ public class CourseController
     @Autowired
     private CourseService courseService;
 
+    @Autowired
+    StudentService studentService;
+
     @GetMapping(value = "/courses", produces = {"application/json"})
     public ResponseEntity<?> listAllCourses()
     {
         ArrayList<Course> myCourses = courseService.findAll();
         return new ResponseEntity<>(myCourses, HttpStatus.OK);
     }
+    @GetMapping(value = "/addstudent/{courseid}/{studentid}", produces = {"application/json"})
+    public ResponseEntity<?> getCourseAddStudent(@PathVariable long courseid, @PathVariable long studentid)
+    {
+        studentService.insertIntoStudCourses(courseid,studentid);
+        return new ResponseEntity<>(courseService.getCountStudentsInCourse(), HttpStatus.OK);
+    }
+
 
     @GetMapping(value = "/studcount", produces = {"application/json"})
     public ResponseEntity<?> getCountStudentsInCourses()
