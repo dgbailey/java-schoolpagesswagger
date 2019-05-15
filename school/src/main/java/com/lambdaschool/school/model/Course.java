@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "course")
-public class Course
+public class Course extends Auditable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
