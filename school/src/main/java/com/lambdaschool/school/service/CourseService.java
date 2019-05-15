@@ -12,4 +12,8 @@ public interface CourseService
     ArrayList<CountStudentsInCourses> getCountStudentsInCourse();
 
     void delete(long id);
+
+//    Course findCourseByCourseName (String course);
+
+    Course findByCourseid(long courseid);
 }
