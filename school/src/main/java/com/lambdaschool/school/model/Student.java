@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "student")
-public class Student
+public class Student extends Auditable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,9 +28,14 @@ public class Student
     {
     }
 
-    public Student(String studname)
+    public Student(String studname,List<Course> courses)
     {
         this.studname = studname;
+        for (Course c: courses)
+        {
+            c.getStudents().add(this);
+        }
+        this.courses = courses;
     }
 
     public long getStudid()

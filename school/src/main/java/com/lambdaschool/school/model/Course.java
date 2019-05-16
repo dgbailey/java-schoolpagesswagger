@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "course")
-public class Course
+public class Course extends Auditable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,19 +28,23 @@ public class Course
     @JsonIgnoreProperties("courses")
     private List<Student> students = new ArrayList<>();
 
+    private StudCourses studCourses;
+
     public Course()
     {
     }
 
-    public Course(String coursename)
-    {
-        this.coursename = coursename;
-    }
 
-    public Course(String coursename, Instructor instructor)
+
+    public Course(String coursename, Instructor instructor,List<Student> students)
     {
         this.coursename = coursename;
         this.instructor = instructor;
+        for (Student s: students)
+        {
+            s.getCourses().add(this);
+        }
+        this.students = students;
     }
 
     public long getCourseid()
