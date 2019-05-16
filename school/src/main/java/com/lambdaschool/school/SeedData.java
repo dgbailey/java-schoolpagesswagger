@@ -99,6 +99,8 @@ public class SeedData implements CommandLineRunner
         // for AUDIT logs will come up as NULL.
         ArrayList<Student> students = new ArrayList<>();
         ArrayList<Course> courses = new ArrayList<>();
+        ArrayList<Course> coursesStudCourses = new ArrayList<>();
+
 
 //seems like studcourse construtor needs to be used in order to have audit fields populate
 
@@ -109,6 +111,7 @@ public class SeedData implements CommandLineRunner
 
         s1.getCourses().add(c1);
         c1.getStudents().add(s1);
+
 
 
 

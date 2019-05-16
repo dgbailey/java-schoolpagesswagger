@@ -28,6 +28,8 @@ public class Course extends Auditable
     @JsonIgnoreProperties("courses")
     private List<Student> students = new ArrayList<>();
 
+    private StudCourses studCourses;
+
     public Course()
     {
     }
