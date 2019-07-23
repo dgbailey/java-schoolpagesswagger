@@ -18,7 +18,7 @@ public class SeedData implements CommandLineRunner
     InstructorRepository instructrepos;
     StudentRepository studentRepository;
     CourseRepository courseRepository;
-//    StudCoursesRepository studCoursesRepository;
+
 
     public SeedData(RoleRepository rolerepos, UserRepository userrepos, InstructorRepository instructrepos,
                     CourseRepository courseRepository,StudentRepository studentRepository)
@@ -32,8 +32,7 @@ public class SeedData implements CommandLineRunner
     }
 
     @Override
-    public void run(String[] args) throws Exception
-    {
+    public void run(String[] args) throws Exception {
         Role r1 = new Role("admin");
         Role r2 = new Role("user");
 
@@ -53,6 +52,8 @@ public class SeedData implements CommandLineRunner
 
         userrepos.save(u1);
         userrepos.save(u2);
+
+
 
 
 
@@ -115,8 +116,8 @@ public class SeedData implements CommandLineRunner
 
 
 
-//        StudCourses auditStudCourses = new StudCourses(s1,c1);
-//        studCoursesRepository.save(auditStudCourses);
+        StudCourses auditStudCourses = new StudCourses(s1,c1);
+
         studentRepository.save(s1);
         courseRepository.save(c1);
 
